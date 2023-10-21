@@ -8,9 +8,9 @@ const EditUserName = ({ setEditing }) => {
     const dispatch = useDispatch();
     const { firstName, lastName } = useSelector((state) => state.user.user);
 
-    useEffect(() => {
-        setNewUserName(`${firstName} ${lastName}`)
-    }, [firstName, lastName])
+    // useEffect(() => {
+    //     setNewUserName(`${firstName} ${lastName}`)
+    // }, [firstName, lastName])
 
 
     const handleUpdate = () => {

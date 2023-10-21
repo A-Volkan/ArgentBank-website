@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import loginUrl from "../Utils/UrlApi";
 import axios from "axios";
 
 // action qui permet de maintenir la connexion même après un rafraîchissement de la page en cas de rememberMe cocher
