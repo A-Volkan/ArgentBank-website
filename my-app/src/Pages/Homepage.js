@@ -1,8 +1,8 @@
 import React from 'react';
 import './Homepage.css';
-import iconChat from '../assets/icon-chat.png';
-import iconMoney from '../assets/icon-money.png';
-import iconSecurity from '../assets/icon-security.png';
+import iconChat from '../assets/icon-chat.webp';
+import iconMoney from '../assets/icon-money.webp';
+import iconSecurity from '../assets/icon-security.webp';
 import Footer from '../Components/Footer';
 import Navbar from '../Components/Navbar';
 import Feature from '../Components/Feature';

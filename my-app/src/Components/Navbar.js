@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { NavLink, useNavigate } from 'react-router-dom';
-import argentBankLogo from '../assets/argentBankLogo.png';
+import argentBankLogo from '../assets/argentBankLogo.webp';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../reducers/UserSlice';
 import { logout } from '../reducers/UserSlice';

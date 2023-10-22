@@ -101,6 +101,132 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+
+          ############ transaction ##################
+  
+  /transaction:
+    get:
+      tags:
+        - Transaction Module
+      summary: Get Account Transactions of the month
+      description: API for fetching user account transactions
+      parameters:
+        - name: Authorization
+          in: header
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Transaction retrieve successfully
+          schema:
+            $ref: '#/definitions/MonthResponseTransactions'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+    post:
+      tags:
+        - Transaction Module
+      summary: Create a Transaction
+      description: API for creating a new transaction
+      parameters:
+        - name: Authorization
+          in: header
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Transaction details for creation
+          required: true
+          schema:
+            $ref: '#/definitions/ResponseTransactions'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transaction added successfully
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 200
+              message:
+                type: string
+                example: Success
+        '404':
+          description: Id not found
+        '500':
+          description: Error on the server
+          
+  /transaction/{id}:
+    get:
+      tags:
+        - Transaction Module
+      summary: Get Transaction by ID
+      description: API for fetching information of a selected transaction
+      parameters:
+        - name: Authorization
+          in: header
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - name: id
+          in: path
+          description: Transaction identifier
+          required: true
+          type: string
+      responses:
+        '200':
+          description: transaction retrieve successfully
+          schema:
+            $ref: '#/definitions/ApiResponseTransactions'
+        '400':
+          description: Transaction not found
+        '500':
+          description: Internal Server Error 
+    put:
+      tags:
+        - Transaction Module
+      summary: Update Transaction Information
+      description: API for updating the selected transaction editable information
+      parameters:
+        - name: Authorization
+          in: header
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - name: id
+          in: path
+          description: Transaction identifier
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Updated editable transaction information
+          required: true
+          schema:
+            $ref: '#/definitions/UpdateTransaction'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transaction updated successfully
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 200
+              message:
+                type: string
+                example: Success
+        '404':
+          description: Id not found
+        '500':
+          description: Error on the server
 securityDefinitions:
   Bearer:
     type: apiKey
