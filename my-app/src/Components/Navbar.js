@@ -59,7 +59,7 @@ const Navbar = () => {
                             Sign Out
                         </NavLink>
                     </>
-                ) : (<NavLink to="./Login" className="main-nav-item">
+                ) : (<NavLink to="/Login" className="main-nav-item">
                     <i className="fa fa-user-circle small-icon"></i>
                     Sign In
                 </NavLink>
