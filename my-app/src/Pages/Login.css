@@ -134,4 +134,12 @@
     font-size: large;
     font-weight: 700;
   }
+
+  @media (max-width: 500px) {
+    .main-nav a {
+     margin-right: 0px !important;
+    }
+    
+  }
+  
     

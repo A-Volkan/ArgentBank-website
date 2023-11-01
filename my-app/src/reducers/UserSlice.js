@@ -9,7 +9,7 @@ export const checkRememberMe = () => async (dispatch) => {
     if (!storedToken && !rememberMe) {
         const sessionToken = sessionStorage.getItem('token');
         if (sessionToken) {
-            sessionStorage.removeItem('token'); // Supprimez uniquement s'il n'y a pas de token dans localStorage
+            sessionStorage.removeItem('token');
         }
     }
 
