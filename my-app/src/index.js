@@ -11,10 +11,10 @@ import rootReducer from "./reducers";
 const store = configureStore({
   reducer: rootReducer,
   devTools: true,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
+  // middleware: (getDefaultMiddleware) =>  // plus utile (c'etais pareceque je recevais une fonction dans le payload) mais permet de regler le probleme derreur console serializable
+  //   getDefaultMiddleware({
+  //     serializableCheck: false,
+  //   }),
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

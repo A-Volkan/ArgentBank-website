@@ -51,14 +51,14 @@ export const loginUser = createAsyncThunk(
                 }
                 console.log('Token enregistré dans le stockage:', token); // Ajoutez cette ligne pour vérifier que le token est correctement enregistré
 
-                // Retournez directement un objet (regle le probleme de token undefined de l'etat car il recevait une fonction avant)
-
+                // Retournez directement un objet regle le probleme de token undefined 
                 return {
                     token: token,
                 };
             } else {
                 throw new Error('Réponse de connexion invalide');
             }
+
         } catch (error) {
             throw error;
         }
