@@ -331,7 +331,6 @@ definitions:
         description:  user notes about the transaction
       deletedNotes:
         type: boolean
-        items:
          description: Indicate if the note should be deleted
          exemple: true
       deletedCategory:
