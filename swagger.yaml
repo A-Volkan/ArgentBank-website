@@ -104,16 +104,21 @@ paths:
 
 ############ transaction ##################
   
-  /transaction:
+  /transactions/{month}:
     get:
       tags:
         - Transaction Module
       summary: Get Account Transactions of the month
-      description: API for fetching user account transactions
+      description: API for fetching user account transactions for a specific month
       parameters:
         - name: Authorization
           in: header
           description: Attach Bearer JWT token
+          required: true
+          type: string
+        - name: month
+          in: path
+          description: Retrieve transaction of the month
           required: true
           type: string
       responses:
@@ -125,36 +130,9 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-    post:
-      tags:
-        - Transaction Module
-      summary: Create a Transaction
-      description: API for creating a new transaction
-      parameters:
-        - name: Authorization
-          in: header
-          description: Attach Bearer JWT token
-          required: true
-          type: string
-        - in: body
-          name: body
-          description: Transaction details for creation
-          required: true
-          schema:
-            $ref: '#/definitions/ResponseTransactions'
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: Transaction added successfully
-          schema:
-            $ref: '#/definitions/ApiResponseTransactions'
-        '404':
-          description: Id not found
-        '500':
-          description: Error on the server
+    
           
-  /transaction/{id}:
+  /transactions/detail/{id}:
     get:
       tags:
         - Transaction Module
@@ -180,11 +158,11 @@ paths:
           description: Transaction not found
         '500':
           description: Internal Server Error 
-    put:
+    patch:
       tags:
         - Transaction Module
       summary: Update Transaction Information
-      description: API for updating the selected transaction editable information
+      description: API for updating the selected transaction, allowing addition, modification, or deletion of information.
       parameters:
         - name: Authorization
           in: header
@@ -198,7 +176,7 @@ paths:
           type: string
         - in: body
           name: body
-          description: Updated editable transaction information
+          description: Updated editable transaction information. Allows addition, modification, or deletion of details.
           required: true
           schema:
             $ref: '#/definitions/UpdatedTransaction'
@@ -307,25 +285,7 @@ definitions:
               type: string
             notes:
               type: string
-  ResponseTransactions:  
-    type: object
-    properties: 
-      Id:
-        type: string
-      createdAt: 
-        type: string
-      description:
-        type: string
-      type:
-        type: string
-      balance:
-        type: number
-      category:
-        type: string
-      amount:
-        type: number
-      notes:
-        type: string
+
   ApiResponseTransactions:
     type: object
     properties: 
@@ -369,3 +329,12 @@ definitions:
       notes: 
         type: string
         description:  user notes about the transaction
+      deletedNotes:
+        type: boolean
+        items:
+         description: Indicate if the note should be deleted
+         exemple: true
+      deletedCategory:
+         type: boolean
+         description: Indicate if the category should be deleted
+         exemple: true
